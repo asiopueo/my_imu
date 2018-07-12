@@ -10,10 +10,6 @@ var port = new serialport('/dev/ttyACM0',
 	});
 
 
-/*app.get('/', function(req, res){
-  res.send('<h1>Hello world</h1>');
-});*/
-
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
@@ -29,4 +25,7 @@ http.listen(3000, function(){
 
 port.on('data', function(data){
 	console.log('Data: ', data.toString('utf8'));
+	var dataArray = data.toString('utf8').split(/, /);
+	console.log(dataArray[1])
 });
+
